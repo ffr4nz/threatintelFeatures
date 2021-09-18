@@ -26,6 +26,8 @@ from features.fastfood.sfh import SHF
 from features.fastfood.formmail import FormMail
 from features.fastfood.msltags import MSLtags
 from features.fastfood.phishingbrands import PhishingBrands
+from features.fastfood.tor import Tor
+from features.fastfood.tldprice import TLDPrice
 
 app = Flask(__name__)
 api = Api(app)
@@ -56,6 +58,8 @@ if cfg.getboolean("sfh"): api.add_resource(SHF, '/ff/sfh/<domain>')
 if cfg.getboolean("formmail"): api.add_resource(FormMail, '/ff/formmail/<domain>')
 if cfg.getboolean("msltags"): api.add_resource(MSLtags, '/ff/msltags/<domain>')
 if cfg.getboolean("phishingbrands"): api.add_resource(PhishingBrands, '/ff/phishingbrands/<domain>')
+if cfg.getboolean("tor"): api.add_resource(Tor, '/ff/tor/<domain>')
+if cfg.getboolean("tldprice"): api.add_resource(TLDPrice, '/ff/tldprice/<domain>')
 
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
@@ -87,5 +91,7 @@ if __name__ == '__main__':
     docs.register(FormMail)
     docs.register(MSLtags)
     docs.register(PhishingBrands)
+    docs.register(Tor)
+    docs.register(TLDPrice)
 
     app.run(host='0.0.0.0', port=PORT, debug=True)
