@@ -68,7 +68,8 @@ if __name__ == '__main__':
             title='Threat Intel Features',
             version='v1',
             plugins=[MarshmallowPlugin()],
-            openapi_version='2.0.0'
+            openapi_version='2.0.0',
+            info=dict(description="Everything you need to properly cook threat intelligence data.")
         ),
         'APISPEC_SWAGGER_URL': '/swagger/',  # URI to access API Doc JSON
         'APISPEC_SWAGGER_UI_URL': '/'  # URI to access UI of API Doc
