@@ -28,6 +28,10 @@ from features.fastfood.msltags import MSLtags
 from features.fastfood.phishingbrands import PhishingBrands
 from features.fastfood.tor import Tor
 from features.fastfood.tldprice import TLDPrice
+from features.fastfood.entropy import Entropy
+from features.fastfood.vowels import Vowels
+from features.fastfood.consonants import Consonants
+from features.fastfood.length import Length
 
 app = Flask(__name__)
 api = Api(app)
@@ -60,6 +64,10 @@ if cfg.getboolean("msltags"): api.add_resource(MSLtags, '/ff/msltags/<domain>')
 if cfg.getboolean("phishingbrands"): api.add_resource(PhishingBrands, '/ff/phishingbrands/<domain>')
 if cfg.getboolean("tor"): api.add_resource(Tor, '/ff/tor/<domain>')
 if cfg.getboolean("tldprice"): api.add_resource(TLDPrice, '/ff/tldprice/<domain>')
+if cfg.getboolean("entropy"): api.add_resource(Entropy, '/ff/entropy/<domain>')
+if cfg.getboolean("vowels"): api.add_resource(Vowels, '/ff/vowels/<domain>')
+if cfg.getboolean("consonants"): api.add_resource(Consonants, '/ff/consonants/<domain>')
+if cfg.getboolean("length"): api.add_resource(Length, '/ff/length/<domain>')
 
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
@@ -94,5 +102,9 @@ if __name__ == '__main__':
     docs.register(PhishingBrands)
     docs.register(Tor)
     docs.register(TLDPrice)
+    docs.register(Entropy)
+    docs.register(Vowels)
+    docs.register(Consonants)
+    docs.register(Length)
 
     app.run(host='0.0.0.0', port=PORT, debug=True)
